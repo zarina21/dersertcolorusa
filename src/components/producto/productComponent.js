@@ -1,27 +1,23 @@
-import BusinessCardProductComponent from "./categorias/businessCard";
-const ProductComponent = ({ product }) => {
+import DropDownComponent from "./dropDownComponent";
+
+const ProductComponents = ({ product }) => {
   return (
-    <div className="columns">
-        <div className="column">
-            imagen
-        </div>
-        <div className="column">
-            <div className="box grid is-col-min-32 has-text-centered m-4">
-                <div className="has-text-right">
-                    <span className="tag is-small">
-                        Clean All
-                        <button className="delete"></button>
-                    </span>
-                </div>
-                <div>
-                    <button className="button is-rounded is-primary mr-2">Product Option</button>  
-                    <button className="button is-rounded ml-2">Sets & Shipping</button>
-                </div>
-                <div className="grid is-col-min-32"> <BusinessCardProductComponent /></div>
-            </div>
-        </div>
+    <div>
+      <DropDownComponent
+        collectionName="size"
+        label="Size"
+        categoryId="fEuRGob5P0QvdhE71h4A"
+        allowedIds={product.subCategory_id}
+      />
+      <DropDownComponent
+        collectionName="stock"
+        label="Stock"
+        categoryId="aPZ1cmZ6He5iqvoK4liv"
+        allowedIds={product.subCategory_id}
+      />
+      {/* Otros dropdowns según lo que necesites */}
     </div>
   );
-}
+};
 
-export default ProductComponent;
+export default ProductComponents;

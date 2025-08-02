@@ -7,12 +7,12 @@ const Logged = () => {
     return (
         <div className="navbar-end">
             <ThemeToggle />
-            <Link href="/UserProfile">
+            <Link href="/userProfile">
                 <Button className="button is-rounded mx-1">
                     <FaUser size={24} />
                 </Button>
             </Link>
-            <Link href="/ShoppingCart">
+            <Link href="/shoppingCart">
                 <Button className="button is-rounded mx-1">
                     <FaShoppingCart size={24} />
                 </Button>
