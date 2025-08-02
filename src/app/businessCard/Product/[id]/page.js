@@ -22,7 +22,7 @@ export default async function ProductPage({ params }) {
         <p>{product.description}</p>    
       </div>
       <div className="column"> 
-        <ProductComponents product={product} />
+          <ProductComponents product={product} />
       </div>
     </div>
   );

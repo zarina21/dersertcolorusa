@@ -7,13 +7,13 @@ const ProductComponents = ({ product }) => {
         collectionName="size"
         label="Size"
         categoryId="fEuRGob5P0QvdhE71h4A"
-        allowedIds={product.subCategory_id}
+        allowedIds={product?.subCategory_id}
       />
       <DropDownComponent
         collectionName="stock"
         label="Stock"
         categoryId="aPZ1cmZ6He5iqvoK4liv"
-        allowedIds={product.subCategory_id}
+        allowedIds={product?.subCategory_id}
       />
       {/* Otros dropdowns según lo que necesites */}
     </div>
