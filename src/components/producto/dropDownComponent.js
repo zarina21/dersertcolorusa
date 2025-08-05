@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../../firebase/client"; // Ajusta la ruta si es necesario
+import FirestoreSelect from "../firebaseSelectComponent";
 
 const DropDownComponent = ({ collectionName, label, categoryId, allowedIds }) => {
   const [options, setOptions] = useState([]);
@@ -49,35 +50,17 @@ const DropDownComponent = ({ collectionName, label, categoryId, allowedIds }) =>
           <p>{label}</p>
         </div>
         <div className="column">
-          <div className="select is-normal is-fullwidth">
-            <select>
-              <option value="">Choose an Option...</option>
-              {options.map((option) => (
-                <option
-                  key={option.id}
-                  value={option.value}
-                >
-                  {option.subCategoryName || option.value}
-                </option>
-              ))}
-            </select>
-          </div>
+          <FirestoreSelect
+            collectionName={collectionName}
+            clause={{ key: "category_id", clause: "==", value: categoryId }}
+            displayKeys={{ key: "id", value: "subCategoryName" }}
+            allowedIds={allowedIds}
+          />
         </div>
       </div>
     </div>
   );
 };
 
-const selectedProduct = {
-  // ...otros campos...
-  subCategory_id: ["BjH94ZXlUPTdUPAFvPC1", "CIqeqb5BDriqLkwcg8cF"],
-};
-
-<DropDownComponent
-  collectionName="sub_category"
-  label="Stock"
-  categoryId="aPZ1cmZ6He5iqvoK4liv"
-  allowedIds={selectedProduct.subCategory_id}
-/>
 
 export default DropDownComponent;

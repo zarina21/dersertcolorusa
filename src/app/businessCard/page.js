@@ -15,9 +15,9 @@ export default function BusinessCard() {
   
   return (
     <main>
-        <section className="section">
-            hola
-        </section>    
+      <section className="section">
+        hola
+      </section>    
       <section className="section">
         <div className="columns">
           <div className="column is-3">
@@ -36,9 +36,7 @@ export default function BusinessCard() {
             }
           </div>
           <div className="column is-9">
-            <ItemList
-              list={items}
-            />
+            <ItemList list={items} basePath="/businessCard" />
           </div>
         </div>
       </section>

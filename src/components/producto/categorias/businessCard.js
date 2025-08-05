@@ -1,33 +1,31 @@
-"use client";
-import React from "react";
 import DropDownComponent from "../dropDownComponent";
 
-const selectedProduct = {
-  // ...otros campos...
-  subCategory_id: ["CIqeqb5BDriqLkwcg8cF", "LQA98oF7HCh23Yenakmj"]
-};
 
-const BusinessCardProductComponent = () => {
+const BCProductComponents = ({ product }) => {
   return (
-    <div className="">
+    <div>
+      
       <DropDownComponent
-        collectionName="shape"
-        label="Shape"
+        collectionName="sub_category"
+        label="Stock"
+        categoryId="aPZ1cmZ6He5iqvoK4liv"
+        allowedIds={product?.subCategory_id}
       />
       <DropDownComponent
         collectionName="sub_category"
         label="Size"
         categoryId="fEuRGob5P0QvdhE71h4A"
-        allowedIds={selectedProduct.subCategory_id}
+        allowedIds={product?.subCategory_id}
       />
       <DropDownComponent
         collectionName="sub_category"
-        label="Stock"
-        categoryId="aPZ1cmZ6He5iqvoK4liv"
-        allowedIds={selectedProduct.subCategory_id}
+        label="Color PEC"
+        categoryId="3rFv1T2XBdlaeWSMRx9N"
+        allowedIds={product?.subCategory_id}
       />
+      {/* Otros dropdowns según lo que necesites */}
     </div>
   );
 };
 
-export default BusinessCardProductComponent;
+export default BCProductComponents;

@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 import ItemCard from './itemPreview';
 
 const ItemList = ({ list }) => {
@@ -6,15 +7,19 @@ const ItemList = ({ list }) => {
         <div className='columns'>
             {
                 list?.map((element, index) => {
-                    const item = element.data 
+                    const item = element.data;
+                    console.log('category:', item.category, 'id:', element.id);
+                    const category = item.category || "businessCard";
                     return (
                         <div key={element.id} className='column is-3'>
-                            <ItemCard
-                                id={element.id} // <-- Agrega esta línea
-                                name={item.value}
-                                description={item.description}
-                                image={item.image}
-                            />
+                            <Link href={`/${category}/product/${element.id}`}>
+                                <ItemCard
+                                    id={element.id}
+                                    name={item.value}
+                                    description={item.description}
+                                    image={item.image}
+                                />
+                            </Link>
                         </div>
                     )
                 })
@@ -23,4 +28,5 @@ const ItemList = ({ list }) => {
     )
 }
 
-export default ItemList
+export default ItemList;
+
