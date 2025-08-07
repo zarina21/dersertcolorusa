@@ -59,19 +59,22 @@ export default function FirestoreSelect({ collectionName, clause, displayKeys, o
   };
 
   return (
-    <div className='select is-link is-fullwidth'>
-      <select 
-        onChange={handleChange}
-        value={selected}
-        disabled={loading}
-      >
-        <option value="">Seleccione una opción</option>
-        {options.map((item, index) => (
-          <option key={index} value={item.key}>
-            {item.value}
-          </option>
-        ))}
-      </select>
+    <div className='columns m-2'>
+      <div className='select is-link is-fullwidth mr-6'>
+        <select 
+          onChange={handleChange}
+          value={selected}
+          disabled={loading}
+        >
+          <option value="">Seleccione una opción</option>
+          {options.map((item, index) => (
+            <option key={index} value={item.key}>
+              {item.value}
+            </option>
+          ))}
+        </select>
+      </div>
+      
     </div>
   );
 }

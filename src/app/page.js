@@ -2,7 +2,7 @@ import ProductComponent from "../components/producto/productComponent";
 
 export default function Home() {
   return (
-<main>
+<main className="m-6">
   <section className="section">
       <div className="columns">
         <div className="column">

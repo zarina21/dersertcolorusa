@@ -1,14 +1,8 @@
 "use client";
 import { getFirestore, doc, getDoc } from "firebase/firestore";
 import { app } from "@/firebase/client";
-import dynamic from "next/dynamic";
-import Link from "next/link";
-import { useEffect, useState } from "react";
 
-const ProductComponents = dynamic(
-  () => import("@/components/producto/productComponent"),
-  { ssr: false }
-);
+import { useEffect, useState } from "react";
 
 export default function ProductPage({ params }) {
   const { id } = params;
@@ -49,11 +43,6 @@ export default function ProductPage({ params }) {
   }
 
   // Supón que cada producto tiene un campo category o type
-  const basePath = {
-    businessCard: "/businessCard/product",
-    rollLabelsAndStickers: "/rollLabelsAndStickers/product",
-    signAndBanners: "/signAndBanners/product",
-  }[product.category]; // Ajusta según tu modelo
 
   return (
     <div className="columns m-4">
@@ -63,11 +52,8 @@ export default function ProductPage({ params }) {
         <p>{product.description}</p>
       </div>
       <div className="column">
-        <ProductComponents product={product} />
+        
       </div>
-      <Link href={`${basePath}/${product.id}`}>
-        Ir a {product.value}
-      </Link>
     </div>
   );
 }
