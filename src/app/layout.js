@@ -3,7 +3,7 @@ import "../styles/globals.scss";
 import Navbar from "@/components/navbar/header";
 import { ThemeProvider } from "@/hooks/useTheme";
 
-import Providers from "@/components/providers";
+import {Providers} from "../store/StoreProvider";
 
 export const metadata = {
   title: "Desert Color Usa",
