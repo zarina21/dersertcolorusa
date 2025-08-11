@@ -1,10 +1,48 @@
 import { useState, useEffect } from "react";
 import QueryingClass from "@/firebase/queryingClass";
+import { useSelector, useDispatch } from "react-redux";
+import { addProduct, deleteProduct, editProduct } from "../../slices/carritoCompras";
+
 export const useBussinesCardController = () => {
   const [valueCategories, setValueCategories] = useState({})
   const [valueAside, setValueAside] = useState({});
   const[category, setCategory] = useState([])
   const [productsList, setProductsList] = useState([]);
+  const dispatch = useDispatch();
+
+  // Obtener los productos del store
+  const productos = useSelector((state) => state.carrito.elements);
+  console.log(productos)
+  // Añadir producto
+  const handleAdd = (id, product) => {
+    dispatch(
+      addProduct(
+        { id: id, cantidad: 1, ...product }
+      ));
+  };
+
+  // Eliminar producto
+  const handleDelete = (id) => {
+    dispatch(deleteProduct(id));
+  };
+
+  // Editar cantidad de producto
+  const handleEdit = (id, cantidad, action) => {
+    let quantity = cantidad;
+    if(action == 'dimiss'){
+      quantity = cantidad - 1
+      if(quantity <= 0) {
+        handleDelete(id);
+        return
+      } 
+    }
+
+    if(action == 'increment') {
+      quantity = cantidad + 1
+    }
+
+    dispatch(editProduct({ id: id, cantidad: quantity }));
+  };
 
   useEffect(() => {
     getAllCategories()

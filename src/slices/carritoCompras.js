@@ -1,24 +1,37 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  value: 0,
+  elements: [],
 };
 
 const carritoCompras = createSlice({
-  name: 'counter',
+  name: 'carrito',
   initialState,
   reducers: {
-    increment: (state) => {
-      state.value += 1;
+    // Añadir un nuevo producto
+    addProduct: (state, action) => {
+      state.elements.push(action.payload);
     },
-    decrement: (state) => {
-      state.value -= 1;
+
+    // Eliminar producto por ID
+    deleteProduct: (state, action) => {
+      state.elements = state.elements.filter(
+        (item) => item.id !== action.payload
+      );
     },
-    incrementByAmount: (state, action) => {
-      state.value += action.payload;
+
+    // Editar cantidad de producto por ID
+    editProduct: (state, action) => {
+      const { id, cantidad } = action.payload;
+      const product = state.elements.find((item) => item.id === id);
+      if (product) {
+        product.cantidad = cantidad;
+      }
     },
   },
 });
 
-export const { increment, decrement, incrementByAmount } = carritoCompras.actions;
+export const { addProduct, deleteProduct, editProduct } =
+  carritoCompras.actions;
+  
 export default carritoCompras.reducer;
