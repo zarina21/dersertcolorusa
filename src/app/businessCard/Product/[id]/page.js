@@ -1,14 +1,18 @@
 "use client";
 import { getFirestore, doc, getDoc } from "firebase/firestore";
 import { app } from "@/firebase/client";
-
 import { useEffect, useState } from "react";
+import BCProductComponents from "@/components/producto/productComponent";
+import Login from "@/components/navbar/loginComponent";
+import { useIsLogin } from "@/hooks/useIsLoggin"; // Importa tu hook
 
 export default function ProductPage({ params }) {
   const { id } = params;
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+
+  const isLogin = useIsLogin(); // Usa tu hook
 
   useEffect(() => {
     const fetchData = async () => {
@@ -34,15 +38,13 @@ export default function ProductPage({ params }) {
     fetchData();
   }, [id]);
 
-  if (loading) {
+  if (loading || isLogin === null) {
     return <div>Cargando...</div>;
   }
 
   if (error) {
     return <div>{error}</div>;
   }
-
-  // Supón que cada producto tiene un campo category o type
 
   return (
     <div className="columns m-4">
@@ -52,7 +54,10 @@ export default function ProductPage({ params }) {
         <p>{product.description}</p>
       </div>
       <div className="column">
-        
+        {isLogin
+          ? <BCProductComponents product={product} />
+          : <Login />
+        }
       </div>
     </div>
   );

@@ -25,7 +25,12 @@ const BCProductComponents = ({ product }) => {
         categoryId="3rFv1T2XBdlaeWSMRx9N"
         allowedIds={product?.subCategory_id}
       />
-      {/* Otros dropdowns según lo que necesites */}
+      <DropDownComponent
+        collectionName="sub_category"
+        label="Shape"
+        categoryId="O2jibrvhMbZ6wLgGvqFo"
+        allowedIds={product?.subCategory_id}
+      />
     </div>
   );
 };
