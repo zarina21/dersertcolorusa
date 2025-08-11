@@ -12,7 +12,7 @@ export const useBussinesCardController = () => {
 
   // Obtener los productos del store
   const productos = useSelector((state) => state.carrito.elements);
-  console.log(productos)
+  
   // Añadir producto
   const handleAdd = (id, product) => {
     dispatch(
