@@ -4,8 +4,9 @@ import { getFirestore } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
 
 // Your web app's Firebase configuration
+// ❌ PROBLEMA GRAVE: Credenciales de Firebase expuestas
 const firebaseConfig = {
-    apiKey: "AIzaSyBdjwEQ96iNtLAx0b2ZRbrqHZFaV7eKxIg",
+    apiKey: "AIzaSyBdjwEQ96iNtLAx0b2ZRbrqHZFaV7eKxIg", // ⚠️ Expuesto públicamente
     authDomain: "desertcolor-4c2db.firebaseapp.com",
     projectId: "desertcolor-4c2db",
     storageBucket: "desertcolor-4c2db.firebasestorage.app",

@@ -4,8 +4,9 @@ import { useRouter } from "next/navigation";
 export default function ItemCard({ id, image, name, description }) {
   const router = useRouter();
 
+  // ❌ Ruta hardcodeada
   const handleClick = () => {
-    router.push(`/businessCard/Product/${id}`);
+    router.push(`/businessCard/Product/${id}`); // Solo funciona para businessCard
   };
 
   return (
